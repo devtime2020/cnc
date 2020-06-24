@@ -59,7 +59,7 @@
                         <th class="align-middle userstat">{{$data->userstat}}</th>
                         <th class="align-middle usersdat">{{$data->usersdat}}</th>
                         <th class="align-middle useredat">{{$data->useredat}}</th>
-                        <th class="align-middle userprof">{{$data->paramd->pardsdesc}}</th>
+                        <th class="align-middle userprof">{{$data->pardsdesc}}</th>
                         <th>
                           <div class="btn-group">
                             <a href="/user/{{$data->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></I></a>

@@ -10,13 +10,21 @@ class ParamdController extends Controller
     public function index(Request $request,$parhtbid)
     {
         //dd($id);
-        $param_h = \App\paramh::find($parhtbid);
-        $data_paramd = DB::table('kds_cnc_paramd')->where('pardtbid', '=', $parhtbid)->get();
-        //$data_paramd = \App\paramd->where('parhtbid','=',$parhtbid)->get();
-        //$data_paramd = \App\paramd::all();
-        //dd($data_paramd);
+        //$param_h = \App\paramh::find($parhtbid);
+        //$data_paramd = DB::table('kds_cnc_paramd')->where('pardtbid', '=', $parhtbid)->get();
+        
+        $data_paramd = DB::table('kds_cnc_paramd')
+            ->join('kds_cnc_paramh', 'kds_cnc_paramd.pardtbid', '=', 'kds_cnc_paramh.parhtbid')->where('kds_cnc_paramh.parhtbid','=',$parhtbid)
+            ->select('kds_cnc_paramd.*', 'kds_cnc_paramh.parhtbid','kds_cnc_paramh.parhtabnm')
+            ->get();
 
-        return view("paramd.index")->with("data_paramd", $data_paramd)->with("param_h",$param_h);
+        $param_h = DB::table('kds_cnc_paramh')->where('parhtbid','=',$parhtbid)->first();
+
+            //dd($data_paramd);
+
+        //return view("paramd.index")->with("data_paramd", $data_paramd)->with("param_h",$param_h);
+
+        return view('paramd.index',['data_paramd' => $data_paramd])->with('param_h',$param_h);
         //return view("paramd.index",['user' => $user]);  
     }
 

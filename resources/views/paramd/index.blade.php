@@ -96,7 +96,7 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Param Parent</label>
-                  <input name="pardtbid" type="text" class="form-control" value="{{$param_h->parhtabnm}}" readonly>
+                  <input name="parhtabnm" type="text" class="form-control" value="{{$param_h->parhtabnm}}" readonly>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="inputPassword4">Entry</label>

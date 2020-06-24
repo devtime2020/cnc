@@ -25,8 +25,9 @@ class User extends Authenticatable
 	'password', 'remember_token',
 	];
 
-	public function paramd()
+	/*public function paramd()
     {
     	return $this->hasOne('App\paramd');
     }
+    */
 }

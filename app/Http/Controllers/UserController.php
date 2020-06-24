@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -20,7 +21,12 @@ class UserController extends Controller
 
     	}else
     	{
-    		$data_users = \App\User::all();
+            $data_users = DB::table('users')
+            ->join('kds_cnc_paramd', 'users.userprof', '=', 'kds_cnc_paramd.pardtabent')
+            ->select('users.*', 'kds_cnc_paramd.pardsdesc')
+            ->get();
+
+    		//$data_users = \App\User::all();
     	}  	
     	//dd($data_users)->all();
     	return view('user.index',['data_users' => $data_users]);

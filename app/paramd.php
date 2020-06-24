@@ -14,9 +14,10 @@ class paramd extends Model
     	return $this->belongTo('App\paramh');
     }
 
-    public function User()
+    /*public function User()
     {
     	return $this->hasOne('App\User');
     }
+    */
 
 }
