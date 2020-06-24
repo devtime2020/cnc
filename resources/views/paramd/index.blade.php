@@ -8,12 +8,6 @@
           <div class="col-sm-6">
             <h1>Parameter - Detail</h1>
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
-            </ol>
-          </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -65,6 +59,13 @@
                           <th>{{$data->pardtabent}}</th>
                           <th>{{$data->pardsdesc}}</th>            
                           <th>{{$data->pardldesc}}</th> 
+                          <th>{{$data->pardcomm}}</th> 
+                          <th>
+                            <div class="btn-group">
+                            <a href="/user/{{$data->id}}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></I></a>
+                            <a href="/user/{{$data->id}}/delete" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to deleted ?')"><i class="fa fa-trash"></I></a>
+                          </div>
+                          </th>
                         </tr>
                     @endforeach
                   </tbody>
@@ -84,71 +85,101 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add Parameter - Detail</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form action="/user/create" method="POST">
+            <form action="/paramd/create/{{$param_h->parhtbid}}" method="POST">
               {{csrf_field()}}
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">User ID</label>
-                  <input name="userusid" type="text" class="form-control" >
+                  <label for="inputEmail4">Param Parent</label>
+                  <input name="pardtbid" type="text" class="form-control" value="{{$param_h->parhtabnm}}" readonly>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">Password</label>
-                  <input name="userpasw" type="password" class="form-control">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">User Name</label>
-                  <input name="userusnm" type="text" class="form-control">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">User Description</label>
-                  <input name="userusdsc" type="text" class="form-control">
+                  <label for="inputPassword4">Entry</label>
+                  <input name="pardtabent" type="text" class="form-control">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">Start Date</label>
+                  <label for="inputEmail4">Short Desc</label>
+                  <input name="pardsdesc" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Long Desc</label>
+                  <input name="pardldesc" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputEmail4">Parvan 1</label>
+                  <input name="pardvan1" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPassword4">Parvan 2</label>
+                  <input name="pardvan2" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputEmail4">Parvan 3</label>
+                  <input name="pardvan3" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPassword4">Parvan 4</label>
+                  <input name="pardvan4" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Pardvac 1</label>
+                  <input name="pardvac1" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Pardvac 2</label>
+                  <input name="pardvac2" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Pardvac 3</label>
+                  <input name="pardvac3" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Par Date 1</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="text" name="usersdat" class="form-control datetimepicker-input" data-target="#reservationdate">
+                        <input type="text" name="parddate1" class="form-control datetimepicker-input" data-target="#reservationdate">
                         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                     </div>
                 </div>             
              
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">End Date</label>
+                <div class="form-group col-md-4">
+                  <label for="inputPassword4">Par Date 2</label>
                   <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                        <input type="text" name="useredat" class="form-control datetimepicker-input" data-target="#reservationdate2">
+                        <input type="text" name="parddate2" class="form-control datetimepicker-input" data-target="#reservationdate2">
+                        <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="inputPassword4">Par Date 3</label>
+                  <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                        <input type="text" name="parddate3" class="form-control datetimepicker-input" data-target="#reservationdate2">
                         <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                     </div>
                 </div>
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect1">User Status</label>
-                  <select class="form-control" name="userstat" >
-                    <option value="1">Aktif</option>
-                    <option value="2">Blocked</option>
-                  </select>
+                 <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Comment</label>
+                  <textarea class="form-control" name="pardcomm" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect1">User Profile</label>
-                  <select class="form-control" name="useracprof" >
-                    <option value="1">Administrator</option>
-                    <option value="2">User</option>
-                  </select>
-                </div>
-              </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -62,7 +62,7 @@
                           <th>{{$data->parhtbid}}</th>
                           <th>{{$data->parhtabnm}}</th>
                           <th>{{$data->parhtabcom}}</th>  
-                          <th><a href="/{{$data->id}}/paramd" class="btn btn-warning btn-warning btn-sm">Detail</th>
+                          <th><a href="/paramd/{{$data->parhtbid}}" class="btn btn-warning btn-warning btn-sm">Detail</th>
                         </tr>
                     @endforeach
                   </tbody>

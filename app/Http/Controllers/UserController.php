@@ -29,20 +29,7 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-    	//insert ke table kds_cnc_user
-    	/*$user = new \App\user;
-    	$user->userusid = $request->userusid;
-    	$user->password = bcrypt($request->password);
-    	$user->userusnm = $request->userusnm;
-    	$user->userusdsc = $request->userusdsc;
-    	$user->usersdat = $request->usersdat;
-    	$user->useredat = $request->useredat;
-    	$user->userstat = $request->userstat;
-    	$user->useracprof = $request->useracprof;
-    	$user->token = str::random(60);
-    	$user->save();
-    	*/
-
+    	
     	$user = new \App\User;
     	$user->name = $request->name;
     	$user->email = $request->email;
@@ -56,20 +43,9 @@ class UserController extends Controller
         $user->userdesc = $request->userdesc;
     	$user->save();
 
-    	//\App\user::create($request->all());
-    	//return $request -> all();
     	return redirect('/user')->with('success','User created successfully.');
     }
 
-    /*public function edit($id)
-    {
-    	//return view('user.index');
-    	$users = \App\user::find($id);
-    	//dd($user);
-    	return view('user.index',['users' => $users]);
-    	//return redirect('/user')->with('success','User created successfully.');
-    }
-	*/
     public function edit($id)
     {
         $user = User::find($id);

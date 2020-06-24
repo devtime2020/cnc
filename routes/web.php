@@ -33,7 +33,8 @@ Route::group(['middleware' => ['auth','checkrole:1']],function(){
 	//route paramater
 	Route::get('/paramh','ParamhController@index');
 	Route::post('/paramh/create','ParamhController@create');
-	Route::get('/{id}/paramd','ParamdController@index');
+	Route::get('/paramd/{parhtbid}','ParamdController@index');
+	Route::post('/paramd/create/{parhtbid}','ParamdController@create');
 });
 
 Route::group(['middleware' => ['auth','checkrole:1,2']],function(){
